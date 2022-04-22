@@ -96,7 +96,7 @@ ul {
 .navigation-list {
   display: flex;
 }
-.navigation .item:not(:last-child) {
+.navigation-list-item:not(:last-child) {
   margin-right: 50px;
 }
 .link {
