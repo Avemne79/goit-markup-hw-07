@@ -47,6 +47,8 @@ ul {
   list-style-type: none;
 }
 
+/* Кнопки */
+
 /* свойства контейнера и секции*/
 .container {
   width: 1200px;
@@ -279,7 +281,7 @@ ul {
   background-color: var(--primary-color);
 }
 
-.close-button {
+.modal__button {
   position: absolute;
   right: 0;
   padding: 0;
@@ -292,11 +294,7 @@ ul {
   outline: none;
 }
 
-.close-button:focus .icon-close-modal {
-  border: 1px solid var(--accent-color);
-}
-
-.icon-close-modal {
+.modal__icon {
   padding: 5px;
   width: 30px;
   height: 30px;
@@ -314,56 +312,21 @@ ul {
   cursor: pointer;
 }
 
-.icon-close-modal:hover {
+.modal__icon:hover {
+  border: 1px solid var(--accent-color);
+  fill: var(--accent-color);
+  transform: rotate(360deg);
+}
+
+.modal__button:focus .modal__icon {
+  border: 1px solid var(--accent-color);
   fill: var(--accent-color);
   transform: rotate(360deg);
 }
 
 /* форма ввода */
 
-/* чистовик */
-
-.input-form {
-  position: relative;
-  width: 100%;
-}
-
-.form-input {
-  height: 40px;
-  padding: 0 0 0 42px;
-  border: 1px solid;
-  border-color: rgba(33, 33, 33, 0.2);
-  border-radius: 4px;
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  outline: none;
-}
-
-.input-icon {
-  position: absolute;
-  margin-top: 30px;
-  margin-left: 12px;
-  width: 18px;
-  height: 18px;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.form-field:hover .form-input {
-  border-color: var(--accent-color);
-}
-
-.form-field:hover .input-icon {
-  fill: var(--accent-color);
-}
-
-.form-field:focus-within {
-  fill: var(--accent-color);
-}
-
-.form-input:focus-within {
-  border-color: var(--accent-color);
-}
-
-.input-header {
+.modal__header {
   margin-top: 40px;
   margin-bottom: 12px;
 
@@ -375,9 +338,11 @@ ul {
   color: var(--primary-text-color);
 }
 
-.form {
+.modal__form {
   padding: 0 40px;
 }
+
+/* Контактные данные */
 
 .form-field {
   display: flex;
@@ -386,7 +351,17 @@ ul {
   margin-bottom: 10px;
 }
 
-.form-field label {
+.form-field:hover .form-field__icon,
+.form-field:focus-within .form-field__icon {
+  fill: var(--accent-color);
+}
+
+.form-field:hover .form-field__input,
+.form-field:focus-within .form-field__input {
+  border-color: var(--accent-color);
+}
+
+.form-field__label {
   margin-bottom: 4px;
 
   text-align: left;
@@ -399,7 +374,28 @@ ul {
   color: var(--secondary-text-color);
 }
 
-.form-field textarea {
+.form-field__input {
+  height: 40px;
+  padding: 0 0 0 42px;
+  border: 1px solid;
+  border-color: rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.form-field__icon {
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 12px;
+  width: 18px;
+  height: 18px;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Комментарий */
+
+.form-field__text {
   height: 120px;
   padding: 12px 16px;
   resize: none;
@@ -410,7 +406,7 @@ ul {
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form-field textarea::placeholder {
+.form-field__text::placeholder {
   font-weight: 400;
   font-size: 12px;
   line-height: 1.17;
@@ -420,15 +416,15 @@ ul {
   color: rgba(117, 117, 117, 0.5);
 }
 
-.input-form textarea:focus,
-.input-form textarea:hover {
+.form-field__text:focus,
+.form-field__text:hover {
   border: 1px solid var(--accent-color);
 }
 
 /* Чекбоксы */
 
 /* утилита */
-.check_input {
+.policy__check {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -441,7 +437,7 @@ ul {
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.checkbox-icon {
+.policy__check-icon {
   display: inline-block;
   width: 16px;
   height: 15px;
@@ -452,17 +448,17 @@ ul {
   cursor: pointer;
 }
 
-.check_input:focus ~ .checkbox-icon {
+.policy__check:focus ~ .policy__check-icon {
   border: 2px solid var(--accent-color);
 }
 
-.checkbox-icon:hover {
+.policy__check-icon:hover {
   border: 2px solid var(--accent-color);
 }
 
 /* Checked */
 
-.check_input:checked + .checkbox-icon {
+.policy__check:checked + .policy__check-icon {
   background-color: var(--accent-color);
   border-color: transparent;
   background-image: url(../images/icon-check-1.svg);
@@ -471,12 +467,14 @@ ul {
   background-origin: border-box;
 }
 
+/* Соглашение */
+
 .policy {
   margin-top: 20px;
   margin-bottom: 30px;
 }
 
-.policy-label {
+.policy__label {
   display: flex;
   align-items: center;
 
@@ -488,7 +486,7 @@ ul {
   color: var(--secondary-text-color);
 }
 
-.policy-option {
+.policy__option {
   margin-left: 3px;
   text-decoration: none;
   border-bottom: 1px solid #2196f3;
@@ -497,7 +495,7 @@ ul {
   outline: none;
 }
 
-.policy-option:focus {
+.policy__option:focus {
   border: 1px solid var(--accent-color);
   border-radius: 2px;
 }
