@@ -807,7 +807,7 @@ ul {
     color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.button-item:not(:last-child) {
+.buttons__item:not(:last-child) {
   margin-right: 8px;
 }
 
@@ -846,16 +846,25 @@ ul {
 
 /* наши проекты */
 
-.project-link {
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-left: -30px;
+  margin-bottom: -30px;
+}
+
+.project__link {
   display: block;
 
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.thumb {
+.project-card {
   position: relative;
   overflow: hidden;
+  background-color: var(--primary-color);
 }
-.thumb::before {
+.project-card::before {
   position: absolute;
   display: inline-block;
   content: '';
@@ -868,12 +877,12 @@ ul {
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.project-link:hover .thumb::before,
-.project-link:focus .thumb::before {
+.project__link:hover .project-card::before,
+.project__link:focus .project-card::before {
   transform: translateY(0);
 }
 
-.thumb-text {
+.project-card__text {
   position: absolute;
   display: inline-block;
   top: 0;
@@ -893,48 +902,40 @@ ul {
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.project-link:hover .thumb-text,
-.project-link:focus .thumb-text {
+.project__link:hover .project-card__text,
+.project__link:focus .project-card__text {
   transform: translateY(0);
-}
-
-.projects-list {
-  display: flex;
-  flex-wrap: wrap;
-
-  margin-left: -30px;
-  margin-bottom: -30px;
 }
 
 /* тень при ховере и фокусе */
 
-.project-link:hover,
-.project-link:focus {
+.project__link:hover,
+.project__link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
-.projects-item {
+.project__item {
   margin-left: 30px;
 }
 
-.projects-item:nth-child(n + 7) {
+.project__item:nth-child(n + 7) {
   margin-bottom: 20px;
 }
 
-.projects-item:nth-child(-n + 6) {
+.project__item:nth-child(-n + 6) {
   margin-bottom: 30px;
 }
 
-.projects-item {
+.project__item {
   flex-basis: calc((100% - 90px) / 3);
 }
-.div-projects {
+.project-meta {
   border: 1px solid #eeeeee;
   padding: 20px 24px;
 }
 
-.header-project {
+.project-meta__header {
   margin-bottom: 4px;
 
   font-weight: 700;
@@ -945,7 +946,7 @@ ul {
   color: var(--primary-text-color);
 }
 
-.text-project {
+.project-meta__text {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.9;
@@ -953,7 +954,7 @@ ul {
   text-align: left;
   color: var(--secondary-text-color);
 }
-.project-link {
+.project__link {
   text-decoration: none;
 }
 
